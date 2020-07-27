@@ -1,0 +1,66 @@
+@for $i from 1 through 10 {
+    @keyframes duck-fly-#{$i} {
+      0% {
+        left: -55px;
+        top: random(75) + vh;
+      }
+  
+      50% {
+        left: 50%;
+        top: random(75) + vh;
+      }
+  
+      100% {
+        left: 105%;
+        top: random(75) + vh;
+      }
+    }
+  }
+  
+  body {
+    background-image:  url(https://image.winudf.com/v2/image/Y29tLmRleHlsYWJzLmR1Y2todW50cmVtYWtlX3NjcmVlbl8wXzZwNmU2amJr/screen-0.jpg?fakeurl=1&type=.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    counter-reset: count;
+    position: relative;
+  }
+  
+  h1 {
+    position: absolute;
+    bottom: 15px;
+    left: 32px;
+    font-size: 150px;
+  }
+  
+  input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+    left: -99999px;
+  }
+  
+  @for $i from 1 through 10 {
+  
+    .duck-#{$i} {
+      position: absolute;
+      animation: duck-fly-#{$i} 4s linear #{$i}s 5 both;
+    }
+  }
+  
+  img {
+    width: 200px;
+  }
+  
+  input[type="checkbox"]:checked {
+    counter-increment: count;
+  }
+  
+  input[type="checkbox"]:checked+img {
+    visibility: hidden;
+  }
+  
+  h1::after {
+    content: ' 'counter(count);
+  }
+  
